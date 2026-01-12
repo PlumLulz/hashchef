@@ -16,7 +16,7 @@ python3 hashchef.py hashfile.txt cracked.txt 0 hc_md5.recipe -verbose
 <img width="992" height="353" alt="Screenshot 2026-01-07 at 04 09 13" src="https://github.com/user-attachments/assets/966937a1-02e1-46d1-a478-7dfcb7727a93" />
 
 ## Hashchef Recipes
-Hashchef uses recipe files to create different Hashcat workflows. A recipe file is just a simple JSON object, making creation of new recipes very easy. Below is the structure, variable details, and variable data type for recipes. There will also be example recipes in this repo. Recipes can be saved with a .json or .recipe file extension. 
+Hashchef uses recipe files to create different Hashcat workflows. A recipe file is just a simple JSON object, making creation of new recipes very easy. Below is the structure, variable details, and variable data type for recipes. There will also be example recipes to reference in this repo. Recipes can be saved with a .json or .recipe file extension. 
 
 #### Hashchef JSON recipe structure:
 ```
