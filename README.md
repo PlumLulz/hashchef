@@ -22,15 +22,33 @@ Hashchef uses recipe files to create different Hashcat workflows. A recipe file 
 ```
 .
 ├── recipe_name: Name of custom recipe. (str)
-└── recipe_steps: Object containing each step of custom recipe. First step starts with step_0. (object)
-    └── step_*: Object containing custom step variables. (object)
-        ├── step_name: Name of step in custom recipe. (str)
-        ├── attack_mode: Hashcat attack mode used for step. Only 0 and 3 are currently supported. (int)
-        ├── wordlist: If no wordlist is needed pass null. Wordlists should be put in a list with their full paths, whole directories can be used. (null, list)
-        ├── mask: If no mask is needed pass null. Put mask sequence in a string. (str)
-        ├── exclude: Wordlists to exclude from running. If no exclusions are needed pass null. Excluded wordlists can be placed in a list with just their names, no paths needed. (null, list)
-        ├── bypass_timeout: Time in minutes to bypass current wordlist/mask that is running in step. If no bypass timeout is desired pass null. (null, int)
-        ├── step_timeout: Time in minutes to bypass the whole current step. Once timeout is reached the next step will start if available. (null, int)
-        └── optflags: List of optional Hashcat flags for step. If no optional flags needed pass an empty list. Do NOT use the --status and --status-timer flags, the program controls them to read the output properly. (list)
+├── recipe_steps: Object containing each step of custom recipe. First step starts with step_0. (object)
+│   └── step_*: Object containing custom step variables. (object)
+│       ├── step_name: Name of step in custom recipe. (str)
+│       ├── attack_mode: Hashcat attack mode used for step. Only 0 and 3 are currently supported. (int)
+│       ├── wordlist: If no wordlist is needed pass null. Wordlists should be put in a list with their full paths, whole directories can be used. (null, list)
+│       ├── mask: If no mask is needed pass null. Put mask sequence in a string. (str)
+│       ├── exclude: Wordlists to exclude from running. If no exclusions are needed pass null. Excluded wordlists can be placed in a list with just their names, no paths needed. (null, list)
+│       ├── bypass_timeout: Time in minutes to bypass current wordlist/mask that is running in step. If no bypass timeout is desired pass null. (null, int)
+│       ├── step_timeout: Time in minutes to bypass the whole current step. Once timeout is reached the next step will start if available. (null, int)
+│       └── optflags: List of optional Hashcat flags for step. If no optional flags needed pass an empty list. Do NOT use the --status and --status-timer flags, the program uses them to read the Hashcat output properly. (list)
+└── hashes_api: Hashes.com upload API integration details. Pass null if not needed. (null, object)
+    ├── api_key: Hashes.com API key. (str)
+    └── upload_frequency: Interval in seconds to upload new cracks to hashes.com. Pick a reasonable number to prevent potential spam to the hashes.com server. (int)
 ```
 
+## Hashes.com upload API integration
+Automatic uploads of cracks to hashes.com can be setup on a set interval. Only hashes that are new compared to last interval will be uploaded to hashes.com. This will help prevent unnecessary requests and limit the use of server resources. When using this feature make sure that you are choosing a reasonable interval to check for new cracks and upload. To set this feature up just add your hashes.com API key and preferred upload frequency to the hashes_api variable in your custom recipe. If auto uploads are not needed just pass null to the hashes_api variable. Below is an example of what to add to a recipe to enable automatic uploads.
+
+#### Enable automatic hashes.com uploads:
+```
+"hashes_api": {
+	"api_key": "Your hashes.com API key",
+	"upload_frequency": 60
+}
+```
+
+#### Disable automatic hashes.com uploads:
+```
+"hashes_api": null
+```
