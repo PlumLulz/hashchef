@@ -1,0 +1,32 @@
+{
+	"recipe_name": "Simple Example Recipe",
+
+	"recipe_steps": {
+		"step_0": {
+			"step_name": "Example Number Mask Attack Step",
+			"attack_mode": 3,
+			"wordlist": null,
+			"mask": "?1?1?1?1?1?1?1?1?1?1?1?1",
+			"exclude": "None",
+			"bypass_timeout": null,
+			"step_timeout": 20,
+			"optflags": ["--remove", "-1?d", "-i", "-w 3", "-O"]
+		},
+
+		"step_1": {
+			"step_name": "Example Wordlist Attack Step",
+			"attack_mode": 0,
+			"wordlist": ["./wordlists", "example_list.txt"],
+			"mask": null,
+			"exclude": ["excluded_example_list1.txt", "excluded_example_list2.txt"],
+			"bypass_timeout": 45,
+			"step_timeout": null,
+			"optflags": ["--remove", "-O", "-w 3", "-r ./rules/best64.rule"]
+		}
+	},
+
+	"hashes_api": {
+		"api_key": "Your hashes.com API key",
+		"upload_frequency": 60
+	}
+}
