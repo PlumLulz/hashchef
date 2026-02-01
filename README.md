@@ -1,4 +1,4 @@
-# hashchef v1.0 Beta
+# hashchef v1.1 Beta
 Hashchef is a lightweight Hashcat wrapper to help automate basic workflows. During my everyday hash cracking I tend to follow specific workflows. These workflows change slightly based off the hash algorithm, time available, number of hashes, etc. The goal with this project was to create a very lightweight program to automate some of these simple workflows. I wanted a modular system that allowed me to start different Hashcat workflows with one command. This program was inspired by the semi conductor industries use of "recipes." These "recipes" use steps to run different capabilites on manufacturing tools. Currently only attack modes 0 and 3 are supported. The main reason for this is because they are the two main modes I use in everyday normal cracking. 
 
 ## Setup / Usage:
