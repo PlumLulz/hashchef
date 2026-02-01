@@ -7,7 +7,7 @@
 			"attack_mode": 3,
 			"wordlist": null,
 			"mask": "?1?1?1?1?1?1?1?1?1?1?1?1",
-			"exclude": "None",
+			"exclude": null,
 			"bypass_timeout": null,
 			"step_timeout": 20,
 			"optflags": ["--remove", "-1?d", "-i", "-w 3", "-O"]
