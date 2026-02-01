@@ -152,13 +152,14 @@ def execute_hashcat(command, excluded, bypass_timeout, step_timeout, verbose):
 				current_list = re.search('Guess.Base', output.decode().rstrip())
 				bypass_elapsed = re.search('Time.Started', output.decode().rstrip())
 				if current_list != None:
-					clist = output.decode().rstrip()
-					clist = clist[clist.find("(")+1:clist.find(")")].split("/")[-1]
-					if clist in excluded:
-						# Remove list from excluded once it is bypassed. This prevents multiple bypass requests being sent.
-						excluded.remove(clist)
-						p.stdin.write(("b\n").encode())
-						p.stdin.flush()
+					if excluded != None:
+						clist = output.decode().rstrip()
+						clist = clist[clist.find("(")+1:clist.find(")")].split("/")[-1]
+						if clist in excluded:
+							# Remove list from excluded once it is bypassed. This prevents multiple bypass requests being sent.
+							excluded.remove(clist)
+							p.stdin.write(("b\n").encode())
+							p.stdin.flush()
 				elif bypass_elapsed != None:
 					if bypass_timeout != None:
 						belapsed = output.decode().rstrip()
@@ -249,7 +250,8 @@ try:
 					print("Starting step '%s'" % (step_name))
 					print("Attack mode: %s (%s)" % (attack_mode, aopt))
 					if attack_mode == 0:
-						print("Excluded wordlists: %s" % (", ".join(exclude)))
+						if exclude != None:
+							print("Excluded wordlists: %s" % (", ".join(exclude)))
 					print("Bypass timeoout: %s" % (bypass_timeout))
 					print("Step timeout: %s" % (step_timeout))
 					print("Optional hashcat flags: %s" % (", ".join(optflags)))
