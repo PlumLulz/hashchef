@@ -30,7 +30,7 @@ Hashchef uses recipe files to create different Hashcat workflows. A recipe file 
 │       ├── step_name: Name of step in custom recipe. (str)
 │       ├── attack_mode: Hashcat attack mode used for step. Only 0 and 3 are currently supported. (int)
 │       ├── wordlist: If no wordlist is needed pass null. Wordlists should be put in a list with their full paths, whole directories can be used. (null, list)
-│       ├── mask: If no mask is needed pass null. Put mask sequence in a string. (str)
+│       ├── mask: If no mask is needed pass null. Put mask sequence in a string or Hashcat mask files in a list. (str, list)
 │       ├── exclude: Wordlists to exclude from running. If no exclusions are needed pass null. Excluded wordlists can be placed in a list with just their names, no paths needed. (null, list)
 │       ├── bypass_timeout: Time in minutes to bypass current wordlist/mask that is running in step. If no bypass timeout is desired pass null. (null, int)
 │       ├── step_timeout: Time in minutes to bypass the whole current step. Once timeout is reached the next step will start if available. (null, int)
