@@ -235,7 +235,7 @@ try:
 				step_name = recipe_steps[step]['step_name']
 				attack_mode = recipe_steps[step]['attack_mode']
 				wordlist = recipe_steps[step]['wordlist']
-				mask = recipe_steps[step]['mask']
+				mask = " ".join(recipe_steps[step]['mask']) if isinstance(recipe_steps[step]['mask'], list) else recipe_steps[step]['mask']
 				exclude = recipe_steps[step]['exclude']
 				bypass_timeout = recipe_steps[step]['bypass_timeout']
 				step_timeout = recipe_steps[step]['step_timeout']
