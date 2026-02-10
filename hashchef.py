@@ -28,7 +28,7 @@ parse.add_argument('-preview', help='Preview Hashcat command for steps', action=
 args = parse.parse_args()
 
 # Header / Version
-version = "v1.1 Beta"
+version = "v1.2 Beta"
 header = f"""
                                                    .--,--.
                                                    `.  ,.'
